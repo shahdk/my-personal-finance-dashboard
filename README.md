@@ -8,7 +8,7 @@ A comprehensive personal finance tracking and visualization dashboard built with
 
 ## 🎥 Dashboard Demo
 
-https://raw.githubusercontent.com/shahdk/my-personal-finance-dashboard/main/PF%20Dash.mp4
+[](https://github.com/shahdk/my-personal-finance-dashboard/raw/refs/heads/main/PF%20Dash.mp4)
 
 *Interactive demo showing key features of the Personal Finance Dashboard*
 

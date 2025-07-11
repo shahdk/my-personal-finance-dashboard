@@ -10,8 +10,7 @@ A comprehensive personal finance tracking and visualization dashboard built with
 
 [![Dashboard Demo](https://img.youtube.com/vi/gFE5ggBpX3Y/0.jpg)](https://www.youtube.com/watch?v=gFE5ggBpX3Y)
 
-
-*Interactive demo showing key features of the Personal Finance Dashboard*
+*Demo showing key features of the Personal Finance Dashboard*
 
 ## 🌟 Features
 

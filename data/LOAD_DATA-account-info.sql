@@ -1,0 +1,30 @@
+INSERT INTO account_info (source, description)
+VALUES
+    ('checking_account_primary', 'Primary checking account at Chase Bank for daily expenses and bill payments. https://chase.com'),
+    ('savings_account_emergency', 'Emergency fund savings account at Ally Bank with high-yield interest. https://ally.com'),
+    ('savings_account_house_fund', 'House down payment savings at Marcus by Goldman Sachs. https://marcus.com'),
+    ('401k_account', 'Employer-sponsored 401k retirement account managed by Fidelity. https://fidelity.com'),
+    ('roth_ira_account', 'Roth IRA retirement account at Vanguard with low-cost index funds. https://vanguard.com'),
+    ('brokerage_account_taxable', 'Taxable investment account at Charles Schwab for stock and ETF investments. https://schwab.com'),
+    ('credit_card_primary', 'Chase Sapphire Preferred credit card for daily purchases and travel rewards. https://chase.com'),
+    ('credit_card_cashback', 'Citi Double Cash credit card for 2% cashback on all purchases. https://citi.com'),
+    ('mortgage_primary_residence', 'Primary residence mortgage at Wells Fargo, 30-year fixed rate. https://wellsfargo.com'),
+    ('mortgage_rental_property', 'Investment property mortgage at Bank of America for rental property. https://bankofamerica.com'),
+    ('car_loan', 'Auto loan at Navy Federal Credit Union for primary vehicle. https://navyfederal.org'),
+    ('health_insurance', 'Health insurance plan through Blue Cross Blue Shield. https://bcbs.com'),
+    ('life_insurance', 'Term life insurance policy with State Farm. https://statefarm.com'),
+    ('auto_insurance', 'Auto insurance policy with Geico for comprehensive coverage. https://geico.com'),
+    ('homeowners_insurance', 'Homeowners insurance with Allstate for primary residence. https://allstate.com'),
+    ('rental_insurance', 'Landlord insurance policy with Liberty Mutual for rental property. https://libertymutual.com'),
+    ('netflix_subscription', 'Netflix premium subscription for streaming entertainment. https://netflix.com'),
+    ('spotify_subscription', 'Spotify premium music streaming service. https://spotify.com'),
+    ('gym_membership', 'Local gym membership at 24 Hour Fitness. https://24hourfitness.com'),
+    ('internet_provider', 'High-speed internet service with Comcast Xfinity. https://xfinity.com'),
+    ('phone_service', 'Mobile phone plan with Verizon Wireless. https://verizon.com'),
+    ('utilities_electric', 'Electric utility service with Pacific Gas & Electric. https://pge.com'),
+    ('utilities_gas', 'Natural gas service with Pacific Gas & Electric. https://pge.com'),
+    ('utilities_water', 'Water and sewer services with local municipal utility. https://cityutilities.gov'),
+    ('amazon_prime', 'Amazon Prime membership for shopping and streaming benefits. https://amazon.com/prime'),
+    ('tax_preparation', 'Tax preparation services with H&R Block for annual tax filing. https://hrblock.com')
+ON CONFLICT (source) DO UPDATE
+    SET description = excluded.description;

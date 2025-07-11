@@ -1,0 +1,7 @@
+plotly
+psycopg2
+streamlit
+pandas
+cpi
+yfinance
+requests

@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: personal_finance
+      POSTGRES_USER: demo_user
+      POSTGRES_PASSWORD: demo_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./data/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./data/LOAD_DATA-vacation.sql:/docker-entrypoint-initdb.d/02-demo_data.sql
+      - ./data/LOAD_DATA-networth.sql:/docker-entrypoint-initdb.d/03-demo_data.sql
+      - ./data/LOAD_DATA-account-info.sql:/docker-entrypoint-initdb.d/04-demo_data.sql
+      - ./data/LOAD_DATA-expense-2024.sql:/docker-entrypoint-initdb.d/05-demo_data.sql
+      - ./data/LOAD_DATA-expense-2025.sql:/docker-entrypoint-initdb.d/06-demo_data.sql
+      - ./data/LOAD_DATA-income-2024.sql:/docker-entrypoint-initdb.d/07-demo_data.sql
+      - ./data/LOAD_DATA-income-2025.sql:/docker-entrypoint-initdb.d/08-demo_data.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U demo_user -d personal_finance"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    environment:
+      DB_HOST: postgres
+      DB_NAME: personal_finance
+      DB_USER: demo_user
+      DB_PASSWORD: demo_password
+      DB_PORT: 5432
+      OLLAMA_HOST: host.docker.internal  # Connect to host machine's Ollama
+    ports:
+      - "8501:8501"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./data:/app/data  # Mount data directory for any additional files
+    extra_hosts:
+      - "host.docker.internal:host-gateway"  # Enable access to host machine
+
+volumes:
+  postgres_data: 
